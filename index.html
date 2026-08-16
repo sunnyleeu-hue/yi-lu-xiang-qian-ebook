@@ -337,6 +337,18 @@ document.addEventListener("keydown", function(event) {
 /* 初始頁 */
 showPage(1);
 
+</script><script>
+const bgMusic = new Audio("music.mp3");
+
+bgMusic.loop = true;
+bgMusic.volume = 0.35;
+
+function startBackgroundMusic() {
+    bgMusic.play().catch(() => {});
+}
+
+document.addEventListener("click", startBackgroundMusic);
+document.addEventListener("keydown", startBackgroundMusic);
 </script>
 
 </body>
