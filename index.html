@@ -345,31 +345,34 @@ showPage(1);
 
 </<script>
 <script>
-const bgMusic = document.getElementById("bgMusic");
+const bgMusic = new Audio("music.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.35;
+
 const musicBtn = document.getElementById("musicBtn");
 
-
 function startMusic() {
-  bgMusic.play().then(() => {
-    musicBtn.textContent = "🔊 音樂";
-  }).catch(() => {
-    musicBtn.textContent = "🎵 點擊播放";
-  });
+    bgMusic.play().then(() => {
+        musicBtn.textContent = "🔊 音樂";
+    }).catch(() => {
+        musicBtn.textContent = "🎵 點擊播放";
+    });
 }
 
 function toggleMusic() {
-  if (bgMusic.paused) {
-    bgMusic.play();
-    musicBtn.textContent = "🔊 音樂";
-  } else {
-    bgMusic.pause();
-    musicBtn.textContent = "🔇 音樂";
-  }
+    if (bgMusic.paused) {
+        startMusic();
+    } else {
+        bgMusic.pause();
+        musicBtn.textContent = "🔇 音樂";
+    }
 }
 
+musicBtn.onclick = toggleMusic;
+
 document.addEventListener("click", function startOnce() {
-  startMusic();
-  document.removeEventListener("click", startOnce);
+    startMusic();
+    document.removeEventListener("click", startOnce);
 }, { once: true });
 </script>
 
