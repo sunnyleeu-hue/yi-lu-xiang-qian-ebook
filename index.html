@@ -158,7 +158,13 @@ button:hover {
 </head>
 
 <body>
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
+<button id="musicBtn" onclick="toggleMusic()">
+  🎵 音樂
+</button>
 <h1>一路向前</h1>
 <div class="subtitle">溫柔地，一頁一頁向前走。</div>
 
@@ -337,6 +343,34 @@ document.addEventListener("keydown", function(event) {
 /* 初始頁 */
 showPage(1);
 
+</<script>
+<script>
+const bgMusic = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+
+function startMusic() {
+  bgMusic.play().then(() => {
+    musicBtn.textContent = "🔊 音樂";
+  }).catch(() => {
+    musicBtn.textContent = "🎵 點擊播放";
+  });
+}
+
+function toggleMusic() {
+  if (bgMusic.paused) {
+    bgMusic.play();
+    musicBtn.textContent = "🔊 音樂";
+  } else {
+    bgMusic.pause();
+    musicBtn.textContent = "🔇 音樂";
+  }
+}
+
+document.addEventListener("click", function startOnce() {
+  startMusic();
+  document.removeEventListener("click", startOnce);
+}, { once: true });
 </script>
 
 </body>
