@@ -291,25 +291,41 @@ autoPlayBtn.textContent = "▶ 自動翻頁";
 document.querySelector(".toolbar").appendChild(autoPlayBtn);
 
 function toggleAutoPlay() {
-  if (autoPlaying) {
-    clearInterval(autoPlayTimer);
-    autoPlayTimer = null;
-    autoPlaying = false;
-    autoPlayBtn.textContent = "▶ 自動翻頁";
-    return;
-  }
 
-  autoPlayTimer = setInterval(function() {
-    let next = currentPage + 1;
+    // 如果正在自動翻頁 → 暫停
+    if (autoPlaying) {
 
-    if (next > totalPages) {
-        next = 1;
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+
+        autoPlaying = false;
+
+        autoPlayBtn.textContent = "▶ 自動翻頁";
+
+        return;
     }
 
-    showPage(next);
-}, 5000);
+    // 開始自動翻頁
+    autoPlaying = true;
+
+    autoPlayBtn.textContent = "Ⅱ 暫停翻頁";
+
+    autoPlayTimer = setInterval(function() {
+
+        let nextPage = currentPage + 1;
+
+        // 到最後一頁 → 回到第 1 頁
+        if (nextPage > totalPages) {
+            nextPage = 1;
+        }
+
+        showPage(nextPage);
+
+    }, 5000);
 }
 
+
+// 綁定按鈕
 autoPlayBtn.onclick = toggleAutoPlay;
 /* 建立縮圖 */
 for (let i = 1; i <= totalPages; i++) {
