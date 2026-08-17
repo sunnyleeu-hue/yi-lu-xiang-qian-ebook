@@ -90,7 +90,12 @@ button:active {
 
 .book {
     background: #f8f5ed;
-    padding: 12px;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow:
+        0 4px 16px rgba(80, 70, 55, 0.08),
+        0 1px 3px rgba(80, 70, 55, 0.05);
+    border: 1px solid rgba(180, 165, 145, 0.25);
 }
 
 #mainImage {
@@ -105,10 +110,12 @@ button:active {
 
 .thumbnails {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     overflow-x: auto;
-    padding: 12px;
-    background: white;
+    padding: 14px 16px;
+    background: #faf8f3;
+    border-top: 1px solid rgba(180, 165, 145, 0.18);
+    scrollbar-width: thin;
 }
 
 .thumbnails img {
@@ -117,13 +124,22 @@ button:active {
     object-fit: cover;
     border-radius: 8px;
     cursor: pointer;
-    opacity: 0.65;
+    opacity: 0.55;
     border: 2px solid transparent;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(80, 70, 55, 0.08);
+}
+
+.thumbnails img:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
 }
 
 .thumbnails img.active {
     opacity: 1;
     border-color: #8eb8c8;
+    box-shadow: 0 3px 10px rgba(100, 140, 150, 0.18);
+    transform: translateY(-2px);
 }
 
 .hint {
