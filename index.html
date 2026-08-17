@@ -206,7 +206,38 @@ const mainImage = document.getElementById("mainImage");
 const pageInfo = document.getElementById("pageInfo");
 const thumbnails = document.getElementById("thumbnails");
 const zoomText = document.getElementById("zoomText");
+let autoPlayTimer = null;
+let autoPlaying = false;
 
+const autoPlayBtn = document.createElement("button");
+autoPlayBtn.textContent = "▶ 自動翻頁";
+document.querySelector(".toolbar").appendChild(autoPlayBtn);
+
+function toggleAutoPlay() {
+  if (autoPlaying) {
+    clearInterval(autoPlayTimer);
+    autoPlayTimer = null;
+    autoPlaying = false;
+    autoPlayBtn.textContent = "▶ 自動翻頁";
+    return;
+  }
+
+  autoPlaying = true;
+  autoPlayBtn.textContent = "⏸ 暫停翻頁";
+
+  autoPlayTimer = setInterval(function() {
+    if (currentPage < totalPages) {
+      nextPage();
+    } else {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = null;
+      autoPlaying = false;
+      autoPlayBtn.textContent = "▶ 自動翻頁";
+    }
+  }, 5000);
+}
+
+autoPlayBtn.onclick = toggleAutoPlay;
 /* 建立縮圖 */
 for (let i = 1; i <= totalPages; i++) {
 
