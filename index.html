@@ -12,32 +12,42 @@
 
 body {
     margin: 0;
+    padding: 0;
     font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-    background: linear-gradient(180deg, #eef8fc 0%, #fffdf8 100%);
-    color: #526b78;
+    background: #f4f0e8;
+    color: #5f625c;
     text-align: center;
+    min-height: 100vh;
 }
+
 
 h1 {
-    margin: 28px 0 4px;
-    font-size: 28px;
-    color: #405c6a;
-    letter-spacing: 3px;
+    margin: 30px 0 6px;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    color: #5d665d;
 }
+
 
 .subtitle {
-    margin-bottom: 20px;
-    color: #78909c;
-    font-size: 15px;
+    margin-bottom: 24px;
+    color: #9a9a8f;
+    font-size: 14px;
+    letter-spacing: 2px;
 }
 
+
 .reader {
-    width: min(920px, 94vw);
-    margin: auto;
-    background: white;
-    border-radius: 22px;
-    box-shadow: 0 8px 30px rgba(80, 110, 120, 0.12);
+    width: min(900px, 92vw);
+    margin: 0 auto 35px;
+    background: #fffdf9;
+    border-radius: 18px;
+    box-shadow:
+        0 12px 35px rgba(100, 90, 70, 0.10),
+        0 2px 8px rgba(100, 90, 70, 0.06);
     overflow: hidden;
+    border: 1px solid rgba(160, 145, 120, 0.12);
 }
 
 .toolbar {
@@ -46,23 +56,32 @@ h1 {
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
-    padding: 14px;
-    background: #ffffff;
+    padding: 14px 18px;
+    background: #faf7f0;
+    border-bottom: 1px solid #eee8dc;
 }
 
 button {
-    border: none;
-    background: #edf5f8;
-    color: #536d79;
-    padding: 9px 15px;
+    border: 1px solid #e3ddd1;
+    background: #fffdf9;
+    color: #6f756d;
+    padding: 9px 16px;
     border-radius: 20px;
-    cursor: pointer;
     font-size: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(100, 90, 70, 0.05);
+}
+button:hover {
+    background: #f1ece2;
+    border-color: #d4ccbd;
+    transform: translateY(-1px);
 }
 
-button:hover {
-    background: #dcecf2;
+button:active {
+    transform: translateY(0);
 }
+
 
 #pageInfo {
     padding: 0 5px;
