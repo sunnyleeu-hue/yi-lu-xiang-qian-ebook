@@ -264,15 +264,14 @@ function toggleAutoPlay() {
     return;
   }
 
-  autoPlaying = true;
-  autoPlayBtn.textContent = "⏸ 暫停翻頁";
+  autoPlayTimer = setInterval(function() {
+    let next = currentPage + 1;
 
- autoPlayTimer = setInterval(function() {
-    if (currentPage >= totalPages) {
-        showPage(1);
-    } else {
-        nextPage();
+    if (next > totalPages) {
+        next = 1;
     }
+
+    showPage(next);
 }, 5000);
 }
 
