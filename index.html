@@ -246,6 +246,7 @@ button:active {
         <button onclick="zoomIn()">＋</button>
 
         <button onclick="openFullscreen()">⛶ 全螢幕</button>
+        <button onclick="shareBook()">↗ 分享</button>
     </div>
 
     <div class="book">
@@ -437,7 +438,35 @@ function closeFullscreen() {
     document.getElementById("fullscreen").style.display =
         "none";
 }
+/* 分享電子書 */
+function shareBook() {
 
+    const shareData = {
+        title: "《一路向前》｜電子書",
+        text: "邀請你一起閱讀《一路向前》",
+        url: window.location.href
+    };
+
+    // 手機或支援分享功能的瀏覽器
+    if (navigator.share) {
+
+        navigator.share(shareData)
+            .catch(function(error) {
+                console.log("分享取消");
+            });
+
+    } else {
+
+        // 電腦瀏覽器：複製網址
+        navigator.clipboard.writeText(window.location.href)
+            .then(function() {
+                alert("電子書連結已複製！\n可以貼到 WhatsApp、Facebook 或 Messenger 分享。");
+            })
+            .catch(function() {
+                alert("請直接複製瀏覽器上方的網址分享。");
+            });
+    }
+}
 /* 鍵盤翻頁 */
 document.addEventListener("keydown", function(event) {
 
