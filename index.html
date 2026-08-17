@@ -138,7 +138,35 @@ button:hover {
     font-size: 28px;
     cursor: pointer;
 }
+.fullscreen-prev,
+.fullscreen-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.75);
+    color: #52708a;
+    font-size: 42px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+}
 
+.fullscreen-prev {
+    left: 25px;
+}
+
+.fullscreen-next {
+    right: 25px;
+}
+
+.fullscreen-prev:hover,
+.fullscreen-next:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
 @media (max-width: 600px) {
     h1 {
         font-size: 23px;
@@ -192,8 +220,15 @@ button:hover {
 
 <!-- 全螢幕 -->
 <div class="fullscreen" id="fullscreen">
+
+    <button class="fullscreen-prev" onclick="prevPage()">‹</button>
+
     <span class="close-fullscreen" onclick="closeFullscreen()">×</span>
+
     <img id="fullscreenImage" src="01.png">
+
+    <button class="fullscreen-next" onclick="nextPage()">›</button>
+
 </div>
 
 <script>
