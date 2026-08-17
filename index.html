@@ -267,16 +267,13 @@ function toggleAutoPlay() {
   autoPlaying = true;
   autoPlayBtn.textContent = "⏸ 暫停翻頁";
 
-  autoPlayTimer = setInterval(function() {
-    if (currentPage < totalPages) {
-      nextPage();
+ autoPlayTimer = setInterval(function() {
+    if (currentPage >= totalPages) {
+        showPage(1);
     } else {
-      clearInterval(autoPlayTimer);
-      autoPlayTimer = null;
-      autoPlaying = false;
-      autoPlayBtn.textContent = "▶ 自動翻頁";
+        nextPage();
     }
-  }, 5000);
+}, 5000);
 }
 
 autoPlayBtn.onclick = toggleAutoPlay;
