@@ -237,6 +237,7 @@ function showPage(page) {
 
     mainImage.src = imagePath;
     mainImage.alt = "第" + page + "頁";
+    document.getElementById("fullscreenImage").src = imagePath;
 
     pageInfo.textContent =
         "第 " + page + " / " + totalPages + " 頁";
